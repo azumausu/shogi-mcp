@@ -38,13 +38,8 @@ npm install
 
 ## 使用方法
 
-### REST APIサーバーの起動
-
-```bash
-npm run start:rest
-```
-
-## Claude Desktop
+### Claude Desktop
+claude_desktop_config.jsonに以下を追記
 ```
   "mcpServers": {
     "shogi-mcp": {
@@ -55,6 +50,13 @@ npm run start:rest
       }
     }
   }
+```
+
+
+### REST APIサーバーの起動
+
+```bash
+npm run start:rest
 ```
 
 デフォルトでポート8787で起動します。
