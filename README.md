@@ -1,6 +1,11 @@
 # Shogi MCP Server
 
+
+https://github.com/user-attachments/assets/cdff97b9-d60f-411b-b81f-9cabd8e62d62
+
+
 将棋AIエンジンのREST APIおよびMCP（Model Context Protocol）サーバー実装です。
+現時点のLLMとUSI形式の将棋AIの統合をサンプルレベルで目指したもの運用する予定はありません。
 
 ## 概要
 
@@ -37,6 +42,19 @@ npm install
 
 ```bash
 npm run start:rest
+```
+
+## Claude Desktop
+```
+  "mcpServers": {
+    "shogi-mcp": {
+      "command": "ここにnodeのフルパスを追加",
+      "args": ["ここにmcp-server.mjsのフルパスを追加"],
+      "env": {
+        "REST_BASE": "http://localhost:8787"
+      }
+    }
+  }
 ```
 
 デフォルトでポート8787で起動します。
