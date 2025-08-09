@@ -3,7 +3,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
-// REST API のベースURL（必要に応じて環境変数で上書き）
+// Bridge API のベースURL（必要に応じて環境変数で上書き）
 const REST_BASE = process.env.REST_BASE || "http://localhost:8787";
 
 // MCP サーバー作成
@@ -55,7 +55,7 @@ server.registerTool(
     if (forceMove) url.searchParams.set("forceMove", forceMove);
 
     const r = await fetch(url);
-    if (!r.ok) throw new Error(`REST error ${r.status}`);
+    if (!r.ok) throw new Error(`Bridge API error ${r.status}`);
     const json = await r.json();
 
     // Inspector互換のため text で返却（見やすいように整形）
@@ -88,7 +88,7 @@ server.registerTool(
     url.searchParams.set("forceMove", move);
 
     const r = await fetch(url);
-    if (!r.ok) throw new Error(`REST error ${r.status}`);
+    if (!r.ok) throw new Error(`Bridge API error ${r.status}`);
     const json = await r.json();
 
     return { content: [{ type: "text", text: JSON.stringify(json, null, 2) }] };

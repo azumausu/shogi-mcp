@@ -2,13 +2,13 @@
   "name": "shogi-mcp",
   "version": "0.1.0",
   "description": "Shogi AI Engine REST wrapper + MCP server",
-  "main": "src/servers/rest-server.js",
+  "main": "src/servers/bridge-server.js",
   "license": "MIT",
   "type": "commonjs",
   "scripts": {
-    "start:rest": "node src/servers/rest-server.js",
+    "start:bridge": "node src/servers/bridge-server.js",
     "start:mcp": "node src/servers/mcp-server.mjs",
-    "start": "npm run start:rest"
+    "start": "npm run start:bridge"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.2",

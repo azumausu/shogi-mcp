@@ -1,4 +1,4 @@
-// rest.js
+// bridge-server.js
 const express = require("express");
 const { AIEngine } = require("../core/engine");
 
@@ -36,7 +36,7 @@ app.get("/analyze", async (req, res) => {
 
 const port = process.env.PORT || 8787;
 app.listen(port, () => {
-  console.log(`REST up on http://localhost:${port}`);
+  console.log(`Bridge server up on http://localhost:${port}`);
   console.log(`Engine: ${ENGINE_PATH}`);
 });
 

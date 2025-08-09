@@ -1,12 +1,12 @@
 # Shogi MCP Server
 
-将棋AIエンジンのREST APIおよびMCP（Model Context Protocol）サーバー実装です。
+将棋AIエンジンのHTTP APIブリッジおよびMCP（Model Context Protocol）サーバー実装です。
 
 ## 概要
 
 このプロジェクトは、ネイティブの将棋エンジンバイナリをラップし、以下の2つのインターフェースを提供します：
 
-- **REST API**: HTTPエンドポイント経由での将棋局面解析
+- **HTTP API Bridge**: HTTPエンドポイント経由での将棋局面解析
 - **MCP Server**: AIエージェント統合のためのModel Context Protocolサーバー
 
 ## 必要要件
@@ -33,10 +33,10 @@ npm install
 
 ## 使用方法
 
-### REST APIサーバーの起動
+### ブリッジサーバーの起動
 
 ```bash
-npm run start:rest
+npm run start:bridge
 ```
 
 デフォルトでポート8787で起動します。
@@ -78,8 +78,8 @@ MCPサーバーはstdio経由で通信し、以下のツールを提供します
 | 変数名 | 説明 | デフォルト値 |
 |--------|------|--------------|
 | `ENGINE_PATH` | 将棋エンジンのパス | `./engine/engine` |
-| `PORT` | REST APIサーバーのポート | `8787` |
-| `REST_BASE` | MCPサーバーが使用するREST APIのベースURL | `http://localhost:8787` |
+| `PORT` | ブリッジサーバーのポート | `8787` |
+| `REST_BASE` | MCPサーバーが使用するブリッジAPIのベースURL | `http://localhost:8787` |
 | `DEBUG` | エンジン通信のデバッグログを有効化（"1"で有効） | - |
 | `EVAL_FILE` | 評価関数ファイルのパス | - |
 | `EVAL_DIR` | 評価関数ディレクトリのパス | - |
@@ -92,7 +92,7 @@ shogi-mcp/
 │   ├── core/
 │   │   └── engine.js         # USIプロトコルエンジンラッパー
 │   └── servers/
-│       ├── rest-server.js    # Express REST APIサーバー
+│       ├── bridge-server.js  # Express HTTP APIブリッジサーバー
 │       └── mcp-server.mjs    # MCPサーバー実装
 ├── engine/
 │   └── engine                # 将棋エンジンバイナリ
@@ -106,7 +106,7 @@ shogi-mcp/
 
 ### テスト
 
-REST APIのテスト例：
+ブリッジAPIのテスト例：
 
 ```bash
 # ヘルスチェック
@@ -123,7 +123,7 @@ curl "http://localhost:8787/analyze?sfen=startpos&depth=15&multipv=3"
 環境変数で明示的にパスを指定してください：
 
 ```bash
-EVAL_FILE=./eval/nn.bin EVAL_DIR=./eval npm run start:rest
+EVAL_FILE=./eval/nn.bin EVAL_DIR=./eval npm run start:bridge
 ```
 
 ### エンジンが起動しない場合
@@ -135,7 +135,7 @@ chmod +x engine/engine
 
 2. エンジンパスを環境変数で指定
 ```bash
-ENGINE_PATH=/path/to/engine npm run start:rest
+ENGINE_PATH=/path/to/engine npm run start:bridge
 ```
 
 ## ライセンス
