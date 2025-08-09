@@ -2,6 +2,12 @@
 
 将棋AIエンジンのHTTP APIブリッジおよびMCP（Model Context Protocol）サーバー実装です。
 
+https://github.com/user-attachments/assets/cdff97b9-d60f-411b-b81f-9cabd8e62d62
+
+
+将棋AIエンジンのREST APIおよびMCP（Model Context Protocol）サーバー実装です。  
+現時点のLLMとUSI形式の将棋AIの統合し、指し手の説明をさせるためのサンプルプログラムです。
+
 ## 概要
 
 このプロジェクトは、ネイティブの将棋エンジンバイナリをラップし、以下の2つのインターフェースを提供します：
@@ -33,8 +39,21 @@ npm install
 
 ## 使用方法
 
-### ブリッジサーバーの起動
+### Claude Desktop
+claude_desktop_config.jsonに以下を追記
+```
+  "mcpServers": {
+    "shogi-mcp": {
+      "command": "ここにnodeのフルパスを追加",
+      "args": ["ここにmcp-server.mjsのフルパスを追加"],
+      "env": {
+        "REST_BASE": "http://localhost:8787"
+      }
+    }
+  }
+```
 
+### ブリッジサーバーの起動
 ```bash
 npm run start:bridge
 ```
