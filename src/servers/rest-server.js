@@ -1,6 +1,6 @@
 // rest.js
 const express = require("express");
-const { AIEngine } = require("./engine");
+const { AIEngine } = require("../core/engine");
 
 const ENGINE_PATH = process.env.ENGINE_PATH || "./engine/engine";
 const DEFAULT_MULTIPV = 10;  // ご要望どおり
