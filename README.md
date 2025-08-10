@@ -2,7 +2,11 @@
 
 将棋AIエンジンのHTTP APIブリッジおよびMCP（Model Context Protocol）サーバー実装です。
 
-https://github.com/user-attachments/assets/cdff97b9-d60f-411b-b81f-9cabd8e62d62
+<a href="https://glama.ai/mcp/servers/@azumausu/shogi-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@azumausu/shogi-mcp/badge" alt="Shogi Server MCP server" />
+</a>
+
+https://github.com/user-attachments/assets/cdff97b9-d60f-411b-b81f-9cabd8e62
 
 
 将棋AIエンジンのREST APIおよびMCP（Model Context Protocol）サーバー実装です。  
